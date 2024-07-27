@@ -1,0 +1,181 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Assignment 1</title>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.0.0-beta3/css/all.min.css">
+   <link rel="stylesheet" href="main.css">
+</head>
+<body>
+    <script src="main.js"></script>
+  <div class="navbar" style="background-color: rgb(142, 155, 168);">
+    <div class="navbar-left" style="margin-right: 20px; padding-right: 20px;">
+      <button class="custom-cursor"> <i class="fas fa-home" style="font-size: 25px;"></i></button>  
+      <button class="custom-cursor"> <i class="fas fa-file" style="font-size: 25px;"></i></button>  
+      <button class="custom-cursor" onclick="generateShareableLink()"><i class="fas fa-share"style="font-size: 25px;"></i></button>
+
+    </div>
+    <div></div>
+    <div style="padding: 3px 10px;">
+        <button class="custom-cursor" style="height: 25px; background-color: blue;color: white;"> VIEW</button>
+      <button class="custom-cursor" style="height: 25px; background-color:green; color: white;"onclick="saveCanvasToFile()"> SAVE</button>
+      <button class="custom-cursor"style="height: 25px; background-color: red;color: white;" onclick="clearCanvas()"> CLEAR</button>
+    </div>
+  </div>
+  <div class="navbar" style="padding: 10px 10px;">
+    <table style="border-collapse: collapse; width: 100%;">
+        <tr>
+          <th style="  padding: 0;">PAINT</th>
+          <th style=" padding: 0;">CLIPBOARD</th>
+          <th style=" padding: 0;">TOOLS</th>
+          <th style="padding: 0;">SHAPES</th>
+          <th style="padding: 0;">BRUSHES</th>
+          <th style="padding: 0px;">COLORS</th>
+        </tr>
+        <tr>
+          <td style=" padding: 5px; text-align: center;">
+            <div><i class="fa-solid fa-palette" style="font-size: 70px;"></i> </div>         </td>
+          <td style="text-align: center; padding: 5px;">
+            <div>
+                <div id="paste" class="column">
+                  <img style="height: 60px;" src="https://cdn3.iconfinder.com/data/icons/tango-icon-library/48/edit-paste-512.png" alt="">
+                  <div>Paste</div>
+                </div>
+                <div id="clip" class="column">
+                    <br>
+                  <div id="cut">
+                    <i class="fa-solid fa-scissors"></i><span>Cut</span>
+                  </div>
+                  <br>
+                  <div id="copy">
+                    <i class="fa-solid fa-copy"></i><span>Copy</span>
+                  </div>
+                </div>
+              </div>
+              
+
+          </td>
+          <td style=" text-align: center; padding: 5px;">
+            <div style="background-color: #dfdbdb; padding: 10px;">
+            <div>
+                <button class="custom-cursor"><i class="fa-solid fa-magnifying-glass" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-font"style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-paperclip"style="font-size: 25px;"></i></button>
+            </div>
+            <div>
+                <button class="custom-cursor"><i class="fa-solid fa-list" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-droplet" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-gear" style="font-size: 25px;"></i></button>
+            </div>   
+            </div>
+        
+        </td>
+          <td style=" text-align: center; padding: 0px; ">
+            <div style="background-color: #dfdbdb; padding: 10px;">
+            <div>
+                <button class="custom-cursor"><i class="fa-solid fa-plus" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-minus" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-circle" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-cube" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-square" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fas fa-diamond" style="font-size: 25px;"></i></button>
+            </div>
+            <div>
+                <button class="custom-cursor"><i class="fas fa-certificate" style="font-size: 20px;"></i></button>
+                <button class="custom-cursor"><i class="fa-regular fa-square-full"style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"> <i class="fa-solid fa-draw-polygon"style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-regular fa-star" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-heart"style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-cloud"style="font-size: 20px;"></i></button>
+
+            </div>
+            <div>
+                <button class="custom-cursor"><i class="fa-regular fa-circle"style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-shield" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-play" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-pause" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-arrow-right" style="font-size: 25px;"></i></button>
+                <button class="custom-cursor"><i class="fa-solid fa-arrow-left" style="font-size: 25px;"></i></button>
+
+            </div>
+        </div>
+            <!-- <img style="height: 100px;" src="C:\Users\Karishma\Desktop\paintapp\shapes3.png" alt="Shapes"> -->
+
+          </td>
+          <td class="colspan">
+            <div style="text-align: center;">
+              <button class="custom-cursor" onclick="setTool('pencil')"oninput="updatePencilSize()" >
+                <i class="fas fa-pencil-alt" style="font-size: 35px;"></i>
+              </button>
+              <button class="custom-cursor" onclick="setTool('eraser')">
+                <i class="fas fa-eraser" style="font-size: 35px;"></i>
+              </button>
+              <button class="custom-cursor" onclick="setTool('pencil')">
+                <i class="fas fa-paint-brush" style="font-size: 35px;"></i>
+              </button>
+            </div>
+            <div style="text-align: center;" class="pencil-size">
+              <label for="pencilSize">Size:</label>
+              <input class="custom-cursor" type="range" id="pencilSize" min="1" max="50" value="5" oninput="updatePencilSize()">
+              <span id="pencilSizeValue">5</span>
+            </div>
+          </td>
+        
+          <td style=" text-align: center; ">
+            <div class="color-picker">
+                <!-- <button onclick="generateShareableLink()"><i class="fas fa-share"></i></button> -->
+                
+                <button class="color-button" style="background-color: black;" onclick="setColor('black')"></button>
+                <button class="color-button" style="background-color: white;" onclick="setColor('white')"></button>
+                <button class="color-button" style="background-color: blue;" onclick="setColor('blue')"></button>
+                <button class="color-button" style="background-color: green;" onclick="setColor('green')"></button>
+                <button class="color-button" style="background-color: yellow;" onclick="setColor('yellow')"></button>
+                <button class="color-button" style="background-color: cyan;" onclick="setColor('cyan')"></button>
+                <button class="color-button" style="background-color: brown;" onclick="setColor('brown')"></button>
+                <button class="color-button" style="background-color: orange;" onclick="setColor('orange')"></button>
+                <button class="color-button" style="background-color: purple;" onclick="setColor('purple')"></button>
+                
+            </div>
+            <div class="color-picker">
+                <!-- <button onclick="generateShareableLink()"><i class="fas fa-share"></i></button> -->
+                
+                <button class="color-button" style="background-color: rgb(186, 231, 22);" onclick="setColor('rgb(186, 231, 22)')"></button>
+                <button class="color-button" style="background-color: rgb(25, 0, 255);" onclick="setColor('rgb(25, 0, 255)')"></button>
+                <button class="color-button" style="background-color: rgb(221, 114, 26);" onclick="setColor('rgb(221, 114, 26)')"></button>
+                <button class="color-button" style="background-color: rgb(231, 27, 214);" onclick="setColor('rgb(231, 27, 214)')"></button>
+                <button class="color-button" style="background-color: rgb(48, 160, 54);" onclick="setColor('rgb(48, 160, 54)')"></button>
+                <button class="color-button" style="background-color: rgb(180, 70, 70);" onclick="setColor('rgb(180, 70, 70)')"></button>
+                <button class="color-button" style="background-color: rgb(18, 33, 99);" onclick="setColor('rgb(18, 33, 99)')"></button>
+                <button class="color-button" style="background-color: rgb(102, 68, 4);" onclick="setColor('rgb(102, 68, 4)')"></button>
+                <button class="color-button" style="background-color: rgb(170, 79, 170);" onclick="setColor('rgb(170, 79, 170)')"></button>
+                
+            </div>
+            <div class="color-picker">
+                <!-- <button onclick="generateShareableLink()"><i class="fas fa-share"></i></button> -->
+                
+                <button class="color-button" style="background-color: rgb(253, 17, 17);" onclick="setColor('rgb(253, 17, 17)')"></button>
+                <button class="color-button" style="background-color: rgb(235, 134, 134);" onclick="setColor('rgb(235, 134, 134)')"></button>
+                <button class="color-button" style="background-color: rgb(119, 119, 28);" onclick="setColor('rgb(119, 119, 28)')"></button>
+                <button class="color-button" style="background-color: rgb(9, 56, 56);" onclick="setColor('rgb(9, 56, 56)')"></button>
+                <button class="color-button" style="background-color: rgb(118, 195, 231);" onclick="setColor('rgb(118, 195, 231)')"></button>
+                <button class="color-button" style="background-color: rgb(199, 190, 108);" onclick="setColor('rgb(199, 190, 108)')"></button>
+                <button class="color-button" style="background-color: rgb(119, 201, 136);" onclick="setColor('rgb(119, 201, 136)')"></button>
+                <button class="color-button" style="background-color: rgb(160, 93, 93);" onclick="setColor('rgb(160, 93, 93)')"></button>
+                <button class="color-button" style="background-color: rgb(90, 89, 185);" onclick="setColor('rgb(90, 89, 185)')"></button>
+                
+            </div>
+          </td>
+        </tr>
+   
+        <!-- Add more rows as needed -->
+      </table>
+      
+    </div>
+    
+  </div>
+  
+    <div class="canvas-container">
+      <canvas  id="canvas" width="1300px" height="400"></canvas>
+    </div>
+
+</body>
+</html>

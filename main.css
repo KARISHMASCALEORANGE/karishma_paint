@@ -1,0 +1,140 @@
+body {
+  margin: 0;
+  padding: 0;
+  font-family:'Franklin Gothic Medium', 'Arial Narrow', Arial, sans-serif;
+}
+
+.navbar {
+  background-color: #f0f0f0;
+  padding: 10px;
+  border-bottom: 1px solid #ccc;
+  display: flex;
+  flex-wrap: wrap;
+  justify-content: space-between;
+}
+
+.navbar-left,
+.navbar-right {
+  display: flex;
+  align-items: center;
+}
+
+.navbar-link {
+  margin-right: 15px;
+  text-decoration: none;
+  color: #333;
+}
+
+.container {
+  padding: 20px;
+}
+
+.custom-cursor {
+  cursor: pointer; /* You can use 'pointer' or any other cursor style */
+}
+
+.canvas-container {
+  border: 1px solid #1b1a1a;
+  padding: 10px;
+  text-align: center;
+  margin: 0 auto;
+  max-width: 100%;
+}
+
+#canvas {
+  margin: 10px;
+  border: 1px solid black;
+  width: 100%;
+  max-width: 1300px;
+  height: 400px;
+}
+
+.color-button {
+  width: 20px;
+  height: 20px;
+  border: none;
+  cursor: pointer;
+  /* border-radius: 50%; */
+}
+
+.tools,
+.colors,
+.shapes {
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+}
+
+.tool,
+.color,
+.shape {
+  padding: 10px;
+  border: 1px solid #ccc;
+  border-radius: 5px;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.shapes-container {
+  display: flex;
+  justify-content: space-between;
+  margin-bottom: 20px;
+  flex-wrap: wrap;
+}
+
+.column {
+  display: inline-block;
+  vertical-align: top;
+  margin-right: 20px;
+}
+
+/* Media Queries */
+@media (max-width: 768px) {
+  .navbar {
+    flex-direction: column;
+  }
+
+  .navbar-left,
+  .navbar-right {
+    flex-direction: column;
+    align-items: flex-start;
+  }
+
+  .navbar-link {
+    margin-bottom: 10px;
+  }
+
+  .tools,
+  .colors,
+  .shapes {
+    flex-direction: column;
+    align-items: center;
+  }
+
+  .canvas-container {
+    padding: 0;
+  }
+
+  #canvas {
+    width: 100%;
+    height: auto;
+  }
+}
+
+@media (max-width: 480px) {
+  .navbar-left,
+  .navbar-right {
+    align-items: center;
+  }
+
+  .navbar-link {
+    margin-bottom: 5px;
+  }
+
+  .tool,
+  .color,
+  .shape {
+    width: 100%;
+    margin: 5px 0;
+  }
+}
