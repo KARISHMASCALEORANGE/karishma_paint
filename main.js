@@ -78,28 +78,6 @@ window.onload = () => {
         stopPainting();
     });
 
-    // Touch events
-    canvas.addEventListener('touchstart', (e) => {
-        e.preventDefault(); // Prevent scrolling
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        const offsetX = touch.clientX - rect.left;
-        const offsetY = touch.clientY - rect.top;
-        startPainting(offsetX, offsetY);
-    });
-
-    canvas.addEventListener('touchmove', (e) => {
-        e.preventDefault(); // Prevent scrolling
-        const touch = e.touches[0];
-        const rect = canvas.getBoundingClientRect();
-        const offsetX = touch.clientX - rect.left;
-        const offsetY = touch.clientY - rect.top;
-        paint(offsetX, offsetY);
-    });
-
-    canvas.addEventListener('touchend', () => {
-        stopPainting();
-    });
 
     // Function to save the canvas content to a file
     window.saveCanvasToFile = async function() {
