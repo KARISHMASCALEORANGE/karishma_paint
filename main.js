@@ -101,14 +101,6 @@ window.onload = () => {
         stopPainting();
     });
 
-    // Function to generate and display the shareable link and Encoding Coordinates
-    window.generateShareableLink = function() {
-        const encodedPoints = encodeURIComponent(JSON.stringify(coordinates));
-        const baseUrl = window.location.href.split('?')[0];
-        const shareableLink = `${baseUrl}?points=${encodedPoints}`;
-        document.getElementById('shareableLink').value = shareableLink;
-    }
-
     // Function to save the canvas content to a file
     window.saveCanvasToFile = async function() {
         try {
